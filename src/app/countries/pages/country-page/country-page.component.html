@@ -1,0 +1,38 @@
+<ng-template #loading>
+  <div class="bg-yellow-500 p-2 text-center">
+    Espere por favor
+  </div>
+</ng-template>
+
+<div *ngIf="country; else loading">
+  <div class="grid grid-cols-12">
+    <div class="col-span-12">
+      <h2>Pais: <strong>{{country.name.common}}</strong></h2>
+      <hr>
+    </div>
+    <div>
+      <h3>Bandera</h3>
+      <img [src]="country.flags.svg" [alt]="country.name.common">
+    </div>
+    <div>
+      <h3>Informacion</h3>
+      <ul>
+        <li>
+          <strong>Poblacion:</strong> {{country.population | number}}
+        </li>
+        <li>
+          <strong>Codigo:</strong> {{country.cca3}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-2">
+    <h3>Traducciones</h3>
+    <div class="flex flex-wrap gap-x-3">
+      <span class="bg-blue-400 p-1 rounded-lg">{{country.translations['ara']?.common}}</span>
+      <span class="bg-blue-400 p-1 rounded-lg">{{country.translations['fra']?.common}}</span>
+      <span class="bg-blue-400 p-1 rounded-lg">{{country.translations['jpn']?.common}}</span>
+      <span class="bg-blue-400 p-1 rounded-lg">{{country.translations['kor']?.common}}</span>
+    </div>
+  </div>
+</div>
